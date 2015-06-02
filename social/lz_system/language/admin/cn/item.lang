@@ -1,0 +1,55 @@
+
+TITLE = 内容管理
+ITEM_INDEX = 文章列表
+USERS = 授权用户
+
+//新建分类
+NEW_CATEGORY = 新建分类
+PLEASE_SELECT = 请选择...
+CATEGORY_NAME = 分类名
+CATEGORY_ROOT = 根分类
+CATEGORY_CHILD = 子分类
+
+//分类列表
+CHECK_BOX = 
+CATEGORIES_TREE=分类
+
+DELETE_CONFIRM = 确定要删除吗？
+ROOT_CATEGORY = 根分类
+MANAGE = 管理
+ITEM_LIST = 新闻列表
+OPTIONS = 操作
+DEFAULT_CATEGORY = 未分类
+
+SHOW_ALL=所有新闻
+SHOW_IMAGE_ITEMS=有图片新闻
+
+//新项目
+current_position=当前位置
+display=显示
+function=功能
+ITEM_CATEGORY = 所属分类
+NEW_ITEM = 添加新闻
+ITEM_NAME = 新闻标题
+ITEM_DESCRIPTION = 新闻描述
+CHECK_BOX = 
+PUB_DATE = 发布时间
+ITEM_SUBMIT = 发布
+ITEM_UNKNOWN_ERROR = 未知错误
+ITEM_FILL_ALL = 请填写所有必需的内容
+ITEM_SUBTITLE = 副标题
+EDIT_ITEM = 编辑新闻
+EDIT_PAGE = 编辑页面
+NEW_ITEM_SUCCESS = 保存成功
+SAVE_SUCCESS =新闻保存成功
+ITEM_DELETE_SUCCESS = 删除新闻成功
+ITEM_EDIT_SUCCESS = 编辑新闻成功
+ITEM_FILL_ALL = 请填写所有要求的内容
+ITEM_NEW_ERROR = 新建新闻出错，原因未知
+ITEM_DELETE_ERROR = 删除新闻出错，原因未知
+ITEM_ORDER = 优先级
+ITEM_TITLE_ADVICE = 建议标题长度保持在15个汉字以内
+PUBLISHED = 发布成功
+PUBLISHED_ERROR=发布失败
+NEW_PICTURE=发表图片新闻
+BELONG_TO_CATEGORY=所属分类

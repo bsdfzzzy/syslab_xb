@@ -1,0 +1,4 @@
+werwer
+<?php
+phpinfo();
+?>

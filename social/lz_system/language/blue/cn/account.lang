@@ -1,0 +1,12 @@
+
+TITLE = 编辑我的帐户
+USER_NAME = 用户名
+EMAIL = E-mail
+USER_PASSWORD = 密码
+USER_PASSWORD_CONFIRM = 重复密码
+PASSWORD_NOT_THE_SAME = 密码不一致！
+USER_SUBMIT = 提交
+IF_NOT_CHANGE = 如果不修改请不要填写此项
+USER_UPDATE_SUCCESS = 更新成功!
+USER_UPDATE_ERR = 填写错误!
+INPUT_ALL = 请填写所有带*的项!

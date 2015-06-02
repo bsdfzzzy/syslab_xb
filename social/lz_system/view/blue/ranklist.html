@@ -1,0 +1,109 @@
+<?php
+	//var_dump($_obj['time_order']);$_obj['ranklist'];
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>电子科技大学学报·社科版</title>
+<link rel="icon" href="images/favicon.png" type="image/x-icon" />
+<link href="css/style_thrid.css" type="text/css" rel="stylesheet" />
+<link href="css/xb.css" type="text/css" rel="stylesheet" />
+<link  href="css/buttons.css" type="text/css" rel="stylesheet"/>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/buttons.js"></script>
+<style>
+    #m_middle{
+    position:inherit;
+        }
+</style>
+</head>
+
+<body id="wrap">
+
+		<!-- INCLUDE banner.html -->
+        <div id="content">
+
+        <!-- INCLUDE repair.html -->
+   
+   
+        <!-- INCLUDE block/left.html -->
+   
+        <div id="middle">
+		<div id="m_top">
+		
+		<?php
+		if($_obj['ranklist_type'] == 'time'){
+        	echo '<h1 class="center">精选文章</h1>';
+		}elseif($_obj['ranklist_type'] == 'view'){
+			echo '<h1 class="center">摘要点击排行</h1>';
+		}elseif($_obj['ranklist_type'] == 'download'){
+			echo '<h1 class="center">全文下载排行</h1>';
+		}
+		?>
+		
+        </div>
+        
+        <div id="m_middle">
+            <hr>
+        <ol class="data2" start="1">
+        
+
+		
+        	<?php foreach ($_obj['ranklist'] as $value) { ?>
+          <!--      <li><a class="cc" href="<?='index.php?p=item&amp;item_id='.$value['item_id']?>"><?=$value['name']?></a>-->
+                 <li class="data3 data4"><a class="catename" href='index.php?p=item&item_id=<?=$value[item_id]?>'><?=$value['name']?></a><span class="publish_time"><?=date("Y-m-d",$value['publish_time'])?></span>
+                        <span class="author"><?=$value['author']?></span>
+                        <div class="voldata">
+                        <span class="Vol"><?=$value["periodsAndpage"]?></span>
+                        <span class="showabstract"><a class="more" href="javascript:void(0);">[+摘要]</a></span>
+                        <span class="data_sp"><a href='index.php?p=pdfdownload&file=<?=$value["file_name"]?>&item_id=<?=$value["item_id"]?>'>PDF</a>&nbsp;&nbsp;(&nbsp;<?=$value["download_count"]?>&nbsp;)</span>
+                        <span class="data_sp mag"><a href='index.php?p=viewhtml&item_id=<?=$value["item_id"]?>'>HTML</a>&nbsp;&nbsp;(<span  class="red">&nbsp;<?=$value["view_count"]?>&nbsp;</span>)</span>
+                        </div>
+                        
+                        <div class="abstract"><?=$value["description"]?></div> 
+				<?php
+				if($_obj['ranklist_type'] == 'time'){
+					$data = date("Y-m-d H:i",$value['publish_time']);
+				}elseif($_obj['ranklist_type'] == 'view'){
+					$data = $value['view_count'];
+				}elseif($_obj['ranklist_type'] == 'download'){
+					$data = $value['download_count'];
+				}
+				?>
+
+
+                </li>
+          	<?php } ?>
+            </ol>
+         	
+        </div>
+</div>
+        </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $abs = $('div.abstract');
+        $abs.hide();
+        $('a.more').click(function () {
+            $(this).parent().parent().next('div').slideToggle('slow');
+            var $link = $(this);
+            if ($link.text() == '[+摘要]') {
+                $link.text('[─摘要]');
+            } else {
+                $link.text('[+摘要]');
+            }
+
+        });
+
+        var $data3a = $('.data3:even');
+        $data3a.css('background', '#f4f4f4');
+    });
+</script>
+		
+		<!-- INCLUDE bottom.html -->
+
+</body>
+</html>
+
+
+

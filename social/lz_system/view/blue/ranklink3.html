@@ -1,0 +1,84 @@
+<?php
+	var_dump($_obj['time_order']);$_obj['ranklist'];
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>电子科技大学学报·社科版</title>
+<link rel="icon" href="images/favicon.png" type="image/x-icon" />
+<link href="css/style_thrid.css" type="text/css" rel="stylesheet" />
+<link href="css/xb.css" type="text/css" rel="stylesheet" />
+<link  href="css/buttons.css" type="text/css" rel="stylesheet"/>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/buttons.js"></script>
+</head>
+
+<body id="wrap">
+
+		<!-- INCLUDE banner.html -->
+        <div id="content">
+
+        <!-- INCLUDE repair.html -->
+   
+   
+        <!-- INCLUDE block/left.html -->
+   
+        <div id="middle">
+		<div id="m_top">
+        	<h1 class="center">最新录用</h1>
+        </div>
+        
+        <div id="m_middle">
+            <div class="pagein">
+                <a href="">首页</a>|<a href="">前页</a>|<a href="">后页</a>|<a href="">尾页</a>
+                <span class="pageinf">第1页&nbsp;共5页&nbsp;共1234条记录</span>
+            </div>
+        <ul class="data2">
+                    <li class="data3"><a href="">复杂网络上的局域免疫研究</a>
+                        <span class="author">张三&nbsp;&nbsp;李四</span>
+                        <div class="voldata">
+                        <span class="data_sp"><a href="">PDF</a>&nbsp;&nbsp;(&nbsp;1312KB&nbsp;)</span>
+                        <span class="data_sp mag"><a href="">HTML</a>&nbsp;&nbsp;(<span  class="red">&nbsp;98&nbsp;</span>)</span>
+                        </div>
+                        <span class="showabstract"><a class="more" href="">+摘要</a></span>
+                        <p class="abstract"> 在网络全局结构信息未知的情况下，如何对大规模网络进行有效的免疫是疾病预防控制中的重要课题之一。本文介绍了针对社区网络、自适应网络和双层耦合网络等的局域免疫方法研究。对于社区网络，通过对5个真实社区网络的分析，发现桥节点的弱连接数目具有一定程度的异质性，存在一些更重要的桥中心节点，进而提出了一种有效的局域桥节点发现算法。对于自适应网络，发现传播过程中会出现很强的社区结构，由此提出一种基于社区效应的局域控制策略，结果显示疾病并非控制越早效果越好。对于双层耦合网络，提出一种促进-抑制的非对称耦合传播模型，研究危机意识的局域散布对于疾病传播的影响，分别解析得到了意识和疾病传播的爆发阈值与稳态分布。这些研究增进了人们对于复杂网络中关键节点的理解，也为实际的疾病防控工作提供了一些借鉴.</p>
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+                             var $abs = $('p.abstract'); 
+                                $abs.hide();
+                            $('a.more').click(function(){
+                                event.preventDefault();
+                                $(this).parent().next('p').slideToggle('slow');
+                                var $link=$(this);
+                                if($link.text()=='+摘要' ){
+                                    $link.text('─摘要');
+                                }
+                                else{
+                                    $link.text('+摘要');
+                                }
+                                    
+                            });
+                                $('.data3').mouseover(function(){
+                                    $(this).css('background','#F5F6F3');
+                                });
+                                 $('.data3').mouseout(function(){
+                                    $(this).css('background','#fff');
+                                });
+                            });
+                        </script>
+                    </li>
+            </ul>
+            <div class="pagein">
+                <a href="">首页</a>|<a href="">前页</a>|<a href="">后页</a>|<a href="">尾页</a>
+                <span class="pageinf">第1页&nbsp;共5页&nbsp;共1234条记录</span>
+            </div>
+         	
+        </div>
+</div>
+        </div>
+		
+		<!-- INCLUDE bottom.html -->
+
+</body>
+</html>

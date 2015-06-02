@@ -1,0 +1,70 @@
+<table cellpadding="0" cellspacing="0" border="0" class="align_center list_table" id="category_table" style="width:auto">
+            	<thead>
+                   	<tr>
+                		<th style="width:50px;">{CATEGORY_ORDER_ID}</th>
+                		<th style="width:120px;">{CATEGORY_NAME}</th>
+                   		<th style="width:200px;">{CATEGORY_DESCRIPTION}</th>
+                   		<th style="width:70px;">{STATUS}</th>
+                        <th style="width:150px;">{CATEGORY_OPTIONS}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+          		  	<!-- BEGIN categories -->
+            		<tr>
+               		 	<td><div admin_type="text"
+                        	admin_para="m=update&table=category&column=order_id&id={category_id}" 
+							style="text-align:center">{order_id}</div></td>
+               		 	<td><div admin_type="text"
+                        	admin_para="m=update&table=category&column=name&id={category_id}">{name}</div></td>
+               		    <td><div admin_type="textarea" 
+                        	admin_para="m=update&table=category&column=description&id={category_id}">{description}</div>
+                        </td>
+						<td>
+							<div admin_type="text"
+			              	admin_para="m=update&table=category&column=status&id={category_id}" 
+			                    admin_select_value="{status}"
+			                    admin_select_source_id="status_select"
+			                    admin_trigger="click" status_category_id="{category_id}"
+								>{show_status:status}</div>
+						</td>
+
+                        <td>
+							<a href="admin.php?p=category&category_id={category_id}">{CATEGORY_CHILD}</a> 
+                          	<?php if (check_show('delete')):?>
+							<a href="javascript:;" onclick="if (confirm('{DELETE_CONFIRM}')) delete_category({category_id},this);">{DELETE}</a> 
+							<?php endif;
+							if (check_show('update')):?>
+                          	<a href="javascript:edit_page({category_id});">{EDIT}</a> 
+							<?php endif;?>
+							<a href="index.php?p=category&category_id={category_id}" target="_blank">{PREVIEW}</a>
+                        </td>
+               		</tr>
+                    <!-- END -->
+                    
+                </tbody>
+                
+</table>
+
+<script>
+function edit_page(id)
+{
+	var o = $('[status_category_id='+id+']');
+	if (o.attr('admin_select_value') == '2')
+	{
+		window.location.href = "admin.php?p=item&action=edit_item&category_id="+id+"&page_type=category";
+	}
+	else
+	{
+		alert("{ONLY_SINGLE_PAGE_COULD_BE_EDITED}");
+	}
+}
+</script>
+
+<div style="display:none">
+<select id="status_select">
+	<!-- BEGIN statuses -->
+	<option value="{index}">{value}</option>
+	<!-- END -->
+</select>
+</div>

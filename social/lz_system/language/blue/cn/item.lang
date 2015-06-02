@@ -1,0 +1,27 @@
+
+TITLE = 文章
+NEW_ARTICLE = 新建文章
+ENTRIES_LIST = 文章列表
+ENTRY_INDEX = 文章首页
+CATEGORY_NAME = 分类名称
+CATEGORY_DESCRIPTION = 分类描述
+OPTIONS = 操作
+ROOT_CATEGORY = 根分类
+
+//新日志
+NEW_ENTRY = 发表新日志
+ENTRY_TITLE = 日志标题
+ENTRY_TAG = Tags(,分隔)
+ENTRY_CONTENT = 内容
+CHECK_BOX = 
+PUB_DATE = 发布时间
+ENTRY_SUBMIT = 发布
+ENTRY_UNKNOWN_ERROR = 未知错误
+ENTRY_FILL_ALL = 请填写所有必需的内容
+ENTRY_SUBTITLE = 副标题
+EDIT_ENTRY = 编辑日志
+SAVE_SUCCESS = 日志保存成功
+DELETE_CONFIRM = 你真的要删除此日志吗？
+
+
+

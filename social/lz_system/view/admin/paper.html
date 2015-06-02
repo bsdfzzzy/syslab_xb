@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"> 
+<head>
+	<!-- INCLUDE meta.html -->
+</head>
+<body>
+<div class='maindiv'>
+
+<div class="headerdiv">
+	<!-- INCLUDE header.html -->
+</div>
+
+<div id='content' style="margin:0px;padding:0px;">
+	<div id='left' onselectstart="return false;">
+    	<div style="margin:4px;margin-top:10px;">
+			<div id="cy_tree" style="display:none">
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+        </div>
+    </div>
+    <div id='maindiv'>
+    	<div class="description">
+			{page_description}
+        </div>
+		
+        <!-- IF err_msg -->
+        <div class="err_msg pad">
+        	{err_msg}
+        </div>
+        <!-- ENDIF -->
+        
+        <!-- IF success_msg -->
+        <div class="success_msg pad">
+        	{success_msg}
+        </div>
+        <!-- ENDIF -->
+        
+		
+		
+        <div class="real_content">
+        <!-- IF page_content -->
+        	{page_content}
+		<br />
+        <!-- ELSE -->
+		
+			<div class="nav_wrapper">
+			</div>
+			
+			<div class="nav_wrapper">
+				&nbsp;{DISPLAY}:
+				<a href="admin.php?p=paper&category_id={category_id}"  class="nav <!-- IF current_status_all -->nav_on<!-- ENDIF -->">{SHOW_ALL}</a>
+				<!-- BEGIN statuses -->
+				<a href="admin.php?p=paper&status={index}&category_id={parent.category_id}" class="nav <!-- IF index=parent.status -->nav_on<!-- ENDIF -->">{strip_tags:value}</a>
+				<!-- END -->
+			</div>
+            <!-- INCLUDE paper_list.html -->
+        <!-- ENDIF -->
+	<br />
+        </div>
+        <br />
+    </div>
+	<div style="clear:both;"></div>
+</div>
+
+<script>
+
+function delete_paper(id,o)
+{
+	$(o).attr('to_be_delete','yes').html('{DELETING}').unbind('click');
+	$.post('admin.php?p=ajax&m=delete&table=paper&id='+id,{ },delete_callback);
+}
+function delete_callback(s)
+{
+	if (s == 'error')
+	{
+		alert('{DELETE_ERROR}');
+		return false;
+	}
+	$('[to_be_delete=yes]').parent().parent().fadeOut();
+}
+</script>
+<!-- INCLUDE footer.html -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+Windows IP Configuration
+
+
+PPP adapter RAS Server (Dial In) Interface:
+
+   Connection-specific DNS Suffix  . : 
+   IP Address. . . . . . . . . . . . : 10.0.1.1
+   Subnet Mask . . . . . . . . . . . : 255.255.255.255
+   Default Gateway . . . . . . . . . : 
+
+Ethernet adapter 本地连接:
+
+   Connection-specific DNS Suffix  . : 
+   IP Address. . . . . . . . . . . . : 211.83.110.79
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 211.83.110.65

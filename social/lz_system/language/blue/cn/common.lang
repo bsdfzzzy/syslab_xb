@@ -1,0 +1,41 @@
+INDEX = 首页
+NAVI_PHOTO = 相册
+NAVI_GUESTBOOK = 留言
+CATEGORY = 分类
+CATEGORIES = 分类
+AUTHOR = 作者
+
+REAL_INDEX = 首页
+LANG_DELETE = 删除
+UPLOAD = 上传
+IMAGE = 图片
+MANAGE = 管理
+DELETE = 删除
+EDIT = 编辑
+ITEM = 新闻
+USER = 用户
+EXIT_TITLE = 系统消息
+EXIT_CLICK_HERE = 如果没有自动跳转，请点击这里
+LOGIN_FIRST = 请先登录
+LOGOUT = 注销登陆
+ACCESS_DENIED = 权限不足
+CONFIG = 设置
+MY_ACCOUNT = 修改帐号
+SITE_CONFIG = 系统设置
+PAGER_FIRST =第一页
+PAGER_LAST = 最后一页
+PAGER_PREV = 上页
+PAGER_NEXT = 下页
+PAGER_PER_PAGE = 每页
+PAGER_ITEMS = 条
+PAGER_PAGE = 页
+PAGER_TOTAL = 共
+
+T_SEC = 秒
+T_MIN = 分
+T_DAY = 天
+T_HOU = 小时
+T_MON = 月
+T_AGO = 前
+T_YEA = 年
+

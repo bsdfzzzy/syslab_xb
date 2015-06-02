@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>电子科技大学学报·自然版</title>
+<link rel="icon" href="images/favicon.png" type="images/x-icon" />
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/xb.css" type="text/css" rel="stylesheet"/>
+<link  href="css/buttons.css" type="text/css" rel="stylesheet"/>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/buttons.js"></script>
+</head>
+<body id="wrap">
+    <!-- INCLUDE banner.html -->
+    <div id="content">
+     <!-- INCLUDE block/left.html -->
+<form action="index.php" method="get" class="search_form">
+        <input type="hidden" name="p" value="advance_search"/>
+        <div class="search_eve border_1 height_1">
+            <span class="search_name">指定期数查询</span>
+            <select class="search_input" name = "year">
+                <option value="">--请选择--</option>
+                <?php 
+                foreach ($_obj['year_out'] as $value) 
+                {
+                    echo '<option value="'.$value.'">'.$value.'</option>';
+                }
+                ?>
+            </select>
+            <span class="search_name_1">年</span>
+            <select class="search_input" name= "number">
+                <option value="">--请选择--</option>
+                <option value="第一期">第一期</option>
+                <option value="第二期">第二期</option>
+                <option value="第三期">第三期</option>
+                <option value="第四期">第四期</option>
+                <option value="第五期">第五期</option>
+                <option value="第六期">第六期</option>
+                <option value="增刊">增刊</option>
+            </select>
+            
+        </div>
+        <div class="search_eve">
+            <span class="search_name">指定DOI</span>
+            <input class="search_input wid_1" type="text" name="DOI" id="DOI">
+        </div>
+        <div class="search_eve border_1 height_1">
+            <span class="search_name">指定栏目</span>
+             <?php 
+                $name_array = $db->get_all("SELECT name FROM lz_category WHERE parent_id != '1' and parent_id != '0'" );
+                ?>
+            <select class="search_input4" name= "category">
+                <option value="">--请选择--</option>
+                <?php 
+                foreach ($_obj['category_out'] as $value) 
+                {
+                	echo '<option value="'.$value.'">'.$value.'</option>';
+                }
+                	
+                 ?>
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="search_eve">
+            <div class="name_back">
+                <span class="search_name marg">指定作者,关键词</span>
+            </div>
+            <div class="search_a">
+                 <div class="search_eve">
+                    <span class="search_name">作者</span>
+                    <input class="search_input wid_1" type="text" name="author" id="author">
+                </div>
+                 <div class="search_eve">
+                    <span class="search_name">题目</span>
+                    <input class="search_input wid_1"  type="text" name="name" id="name">
+                 </div>
+                <div class="search_eve">
+                    <span class="search_name">摘要</span>
+                    <input class="search_input wid_1" type="text" name="description" id="description">
+                 </div>
+                <div class="search_eve">
+                    <span class="search_name">关键词</span>
+                    <input class="search_input wid_1" type="text" name="keyword" id="keyword">
+                 </div>
+                <div class="search_eve">
+                    <span class="search_name">分类号</span>
+                    <input class="search_input wid_1" type="text" name="classname" id="classname">
+                 </div>
+                
+            </div>
+        </div>
+        <div class="border_2"></div>
+        <div class="search_eve">
+            <span class="search_name">显示效果</span>
+            <span class="search_name wid_3">每页</span>
+            <input class="search_input wid_2" type="text" name="page_size" id="page_size" value="30" >
+            <span class="search_name wid_3">条</span>
+        </div>
+         <div class="border_2"></div>
+         <div class="search_eve">
+        <span class="search_name">排序</span>
+        <input class="search_input1" type="radio" name="sort_mode" value="category" checked><span class="search_name">年,期,起始页</span>
+        <input class="search_input1" type="radio" name="sort_mode" value="author"><span class="search_name">作者姓名</span>
+        <input class="search_input1 mlef" type="radio" name="sort_mode" value="keyword"><span class="search_name">关键词</span>
+        </div>
+        <input type="submit" value="提交"  href="#" class="button glow " style="width:100px;margin-left:250px;margin-top:10px;">
+    </form>
+</div>
+    <!-- INCLUDE bottom.html -->
+</body>
+</html>

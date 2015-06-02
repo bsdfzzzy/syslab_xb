@@ -1,0 +1,13 @@
+
+TITLE = 首页
+INDEX_DESCRIPTION = WAP信息发布系统
+ITEMS_LIST = 列表
+
+
+//评论
+COMMENT_NAME = Name
+COMMENT_EMAIL = Email
+COMMENT_SUBMIT = 提交
+
+ITEM_READ = 阅读
+ITEM_COMMENT = 评论

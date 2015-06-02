@@ -1,0 +1,71 @@
+NOT_ALLOWED=权限不足
+INDEX = 后台首页
+SITE_TITLE = 后台
+SITE_INDEX = 网站首页
+CATEGORY = 分类/页面
+CATEGORIES = 分类
+GUESTBOOK=留言本
+RIGHTS=权限
+REAL_INDEX = 首页
+DELETE = 删除
+DELETING = 删除中..
+UPLOAD = 上传
+IMAGE = 图片
+MANAGE = 管理
+DELETE = 删除
+UPDATE= 更新
+NEW = 添加
+EDIT = 编辑
+ITEM = 内容管理
+USER = 用户
+EXIT_TITLE = 系统消息
+EXIT_CLICK_HERE = 如果没有自动跳转，请点击这里
+LOGIN_FIRST = 请先登录
+LOGOUT = 注销登陆
+LOGOUT_SUCCESS = 注销成功
+
+select_all =全选
+select_inverse=反选
+
+ACCESS_DENIED = 权限不足
+CONFIG = 设置
+MY_ACCOUNT = 帐号
+SITE_CONFIG = 系统设置
+HIGH_LIGHT = #FFFF99
+make_html = 生成网页
+PAGER_FIRST = 第一页
+PAGER_LAST = 最后一页
+PAGER_PREV = 上一页
+PAGER_NEXT = 下一页
+PAGER_PER_PAGE = 每页
+PAGER_ITEMS = 条
+PAGER_PAGE = 页
+PAGER_TOTAL = 共
+CANCEL = 取消
+
+year = 年
+years = 年
+month = 月
+months = 月
+day = 日
+days = 天
+hour = 时
+hours = 小时
+minute = 分
+minutes = 分钟
+second = 秒
+seconds = 秒
+tdat = 后天
+tomorrow = 明天
+yesterday = 昨天
+today = 今天
+
+
+URL_NAME = URL名
+
+CONTRACT=收缩
+EXPAND=展开
+AVAIL_ACTIONS=可用操作
+UNKNOWN=未知
+INPUT_VAR_ERROR=参数错误
+paper=申请

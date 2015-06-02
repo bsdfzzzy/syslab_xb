@@ -1,0 +1,115 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>电子科技大学学报·自然版</title>
+<link rel="icon" href="images/favicon.png" type="image/x-icon" />
+<link href="css/style_thrid.css" type="text/css" rel="stylesheet" />
+<link href="css/xb.css" type="text/css" rel="stylesheet" />
+<link  href="css/buttons.css" type="text/css" rel="stylesheet"/>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/buttons.js"></script>
+<style>
+    #m_middle{
+    position:inherit;
+        }
+</style>
+</head>
+
+<body id="wrap">
+
+		<!-- INCLUDE banner.html -->
+        <div id="content">
+
+        <!-- INCLUDE repair.html -->
+   
+   
+        <!-- INCLUDE block/left.html -->
+   
+        <div id="middle">
+		<div id="m_top">
+        	<h1 class="center">高级搜索结果</h1>
+        </div>
+        
+        <div id="m_middle">
+            <hr>
+            <?php
+            //$pid=!empty($_GET['pid'])?$_GET['pid']:1;
+            $pid  =  $_POST['pid'];
+            if($pid != 1)
+            {
+                $start = (intval($pid)-1)*intval($_GET['page_size'])+1;
+            }
+            else
+            {
+                $start = 1;
+            }
+            #$start = $pid!=1?1:(intval($pid)-1)*intval($_GET['page_size']);
+            
+            ?>
+        <ol class="data2" start="<?php echo $start ;?>">
+	        
+	        <?php if( ! $_obj['result']) { ?>
+	        <a class="center">无搜索结果</a>
+	        <?php } ?>
+
+        
+    		<?php foreach ($_obj['result'] as $value) {?>
+    <!--            <li><a class="cc" href="<?='index.php?p=item&amp;item_id='.$value['item_id']?>"><?=$value['name']?></a>
+                <span><?=date("Y-m-d H:i",$value['publish_time'])?></span>
+                </li> -->
+                <li class="data3 data4"><a class="catename" href='index.php?p=item&item_id=<?=$value[item_id]?>'><?=$value['name']?></a><span class="publish_time"><?=date("Y-m-d",$value['publish_time'])?></span>
+                        <span class="author"><?=$value['author']?></span>
+                        <div class="voldata">
+                        <span class="Vol"><?=$value["periodsAndpage"]?></span>
+                        <span class="showabstract"><a class="more" href="javascript:void(0);">[+摘要]</a></span>
+                        <span class="data_sp"><a href='index.php?p=pdfdownload&file=<?=$value["file_name"]?>&item_id=<?=$value["item_id"]?>'>PDF</a>&nbsp;&nbsp;(&nbsp;<?=$value["download_count"]?>&nbsp;)</span>
+                        <span class="data_sp mag"><a href='index.php?p=viewhtml&item_id=<?=$value["item_id"]?>'>HTML</a>&nbsp;&nbsp;(<span  class="red">&nbsp;<?=$value["view_count"]?>&nbsp;</span>)</span>
+                        </div>
+                        
+                        <div class="abstract"><?=$value["description"]?></div>
+                    </li>
+          	<?php } ?>
+
+          	<?php 
+                $pagi=$_obj['pagi'];
+                $pagi->display();
+            ?>
+
+            </ol>
+        </div>
+</div>
+        <script type="text/javascript">
+                            $(document).ready(function(){
+                             var $abs = $('div.abstract'); 
+                                $abs.hide();
+                            $('a.more').click(function(){
+                                $(this).parent().parent().next('div').slideToggle('slow');
+                                var $link=$(this);
+                                if($link.text()=='[+摘要]' ){
+                                    $link.text('[─摘要]');
+                                }
+                                else{
+                                    $link.text('[+摘要]');
+                                }
+                                    
+                            });
+                               /* $('.data3').mouseover(function(){
+                                    $(this).css('background','#F5F6F3');
+                                });
+                                 $('.data3').mouseout(function(){
+                                    $(this).css('background','#fff');
+                                });*/
+                                var $data3a = $('.data3:even');
+                            $data3a.css('background','#f4f4f4');
+                            }); 
+                            
+            </script>
+        </div>
+		
+		<!-- INCLUDE bottom.html -->
+
+</body>
+</html>
+
+

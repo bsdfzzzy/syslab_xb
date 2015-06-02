@@ -1,0 +1,86 @@
+        <!-- IF item_id -->
+        <form action="admin.php?m=edit_item&p=item&item_id={item_id}&page_type={page_type}&category_id={category_id}" method="post" enctype="multipart/form-data">
+        <!-- ELSE -->
+        <form action="admin.php?m=new_item&p=item" method="post"  enctype="multipart/form-data" >
+        <!-- ENDIF -->
+        	<table >
+            	<tr>
+                	<td valign="top">
+						<!-- IF page_type="category" -->
+							页面名称：
+						<!-- ELSE -->
+							{ITEM_CATEGORY}
+						<!-- ENDIF -->
+					</td>
+                	<td>
+						<!-- IF page_type="category" -->
+							{category_name}
+							<input type="hidden" name="name" value="{category_name}"  />
+							<input type="hidden" name="category_id" value="{category_id}" />
+						<!-- ELSE -->
+							<div><select name="category_id" >
+	                        	<option value="0">{PLEASE_SELECT}</option>
+	                        		{category_tree}
+	                        	</select>*
+							</div>
+						<!-- ENDIF -->
+                    	
+                    </td>
+               	</tr>
+		<!-- IF page_type!="category" -->
+            	<tr>
+                	<td>标题</td>
+                	<td>
+				<input type="text" class="inputtext" name="name" value="{item.name}" style="width:600px" />*
+			</td>
+               	</tr>
+		<!-- ENDIF -->
+            	<tr>
+                	<td>关键词</td>
+                	<td><input type="text" class="inputtext" name="keywords" value="{item.keywords}" style="width:600px" /></td>
+               	</tr>
+		<!-- IF page_type!="category" -->
+            	<tr>
+                	<td>作者</td>
+                	<td><input size="20" name="author" value='{htmlspecialchars:item.author}' /></td>
+               	</tr>
+		<!-- ENDIF -->
+            	<tr>
+                	<td>发布时间</td>
+                	<td>
+                    	<input type="text" size="4" name="time[year]" value="<?php echo date('Y',$_obj['publish_time']);?>" />年 
+                        <input type="text" size="2" name="time[month]" value="<?php echo date('m',$_obj['publish_time']);?>" />月 
+                        <input type="text" size="2" name="time[day]" value="<?php echo date('d',$_obj['publish_time']);?>" />日 
+                        <input type="text" size="2" name="time[hour]" value="<?php echo date('H',$_obj['publish_time']);?>" />点 
+                        <input type="text" size="2" name="time[minute]" value="<?php echo date('i',$_obj['publish_time']);?>" />分 
+                    </td>
+               	</tr>
+				
+                <tr>
+                	<td valign="top">内容</td>
+                    <td>
+				<?php
+				$oFCKeditor = new FCKeditor('description') ;
+				$oFCKeditor->Width = 800;
+				$oFCKeditor->Height= 600;
+				$oFCKeditor->BasePath	= 'lz_system/plugin/fckeditor/' ;
+
+				$oFCKeditor->Value		= $_obj['item']['description'];
+				$oFCKeditor->Create() ;
+
+                    ?></td>
+                </tr>
+		<tr>
+			<Td>上传附件</td>
+			<td><iframe src="admin.php?p=upload" style="width:800px;height:30px;border:0;text-align:left;" border="0" frameborder="no" scrolling="no"></iframe></td>
+                </tr>
+                <tr>
+                	<td colspan="2" align="center">
+				<input type="submit" value="提交" /> &nbsp;
+				<input type="button" value="返回"  onclick="if (confirm('这意味着所有的修改不会被保存，您要继续吗？')) history.go(-1);" /> &nbsp;
+			</td>
+                </tr>
+             </table>
+             
+                
+           </form>

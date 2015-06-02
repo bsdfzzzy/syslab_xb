@@ -1,0 +1,100 @@
+  <div id="middle">
+		<div id="m_top">
+        	<span class="center">{category.name}</span>
+        </div>
+        <div id="m_middle">
+        
+
+<!--<div class="guestbook new_item">
+	<h2>添加留言</h2>
+   	<table cellpadding="0" cellspacing="0" border="0">
+    	<tr>
+        	<td>姓名</td>
+            <td><input type="text" guestbook="name"  class="inputtext" /></td>
+        </tr>
+        <tr>
+        	<td>EMAIL</td>
+            <td><input type="text" guestbook="email"   class="inputtext" /></td>
+        </tr>
+        <tr>
+        	<td valign="top">内容</td>
+            <td><textarea style="width:400px;height:150px;" guestbook="content"></textarea></td>
+        </tr>
+        <tr>
+        	<td></td>
+            <td><input type="button" onclick="new_entry()" class="bt" value="提交" />&nbsp;&nbsp;</td>
+        </tr>
+    </table>
+</div>-->
+
+
+
+<div class="guestbook new_item lz_guestbook">
+<form method="post">
+                	<fieldset>
+                    	<p>
+                        	<label for="name">姓名：</label>
+				<input type="text"  id="name" guestbook="name"  class="inputtext" value="{login_user.name}" />                        
+                        </p>
+                        <p>
+                        	<label for="email">Email：</label>
+				<input type="text"  id="email" guestbook="email"   class="inputtext" value="{login_user.email}" />
+                        </p>
+                        <p>
+                        	<label for="message">内容：</label>
+				<textarea  cols="45" rows="7" id="message" class="inputtext" guestbook="content"></textarea>
+                        </p>
+                        <p class="btn_bg">
+				<input type="button" onclick="new_entry()" class="bt" value="提交" />
+                        </p>
+                    </fieldset>
+                </form>
+</div>
+
+<script>
+function new_entry()
+{
+	var name = $('[guestbook=name]').val();
+	var email = $('[guestbook=email]').val();
+	var content = $('[guestbook=content]').val();
+	if (!name || !content)
+	{
+		alert('请填写完整');
+		return;
+	}
+	$.post('index.php?p=guestbook&m=new',{ name:name,email:email,content:content},callback);
+}
+
+function callback(s)
+{
+	if (s == 'success')
+	{
+		alert('留言成功，通过审核后才能显示出来。');
+	}
+	else
+	{
+		alert(s);
+	}
+}
+</script>
+<hr />
+<!-- BEGIN items -->
+<div id="guestbook">
+	<div class="gb_item_title"><span style="color:#4499ee">></span><span class='date'>{format_date:time}</span> <span class='name'>{name}</span>:</div>
+    <div class="gb_item_content">{content}
+    <!-- IF reply_content -->
+    	<div class="gb_item_reply"><b>管理员回复:</b>{reply_content}</div>
+    <!-- ENDIF -->
+    </div>
+</div>
+<!-- END -->
+<br />
+<div class="pager">
+{pager}
+</div>
+<br />
+
+
+         
+     </div>
+</div>

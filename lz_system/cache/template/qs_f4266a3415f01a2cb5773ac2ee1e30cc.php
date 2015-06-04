@@ -64,6 +64,7 @@ can_not_add = false;
             
             <?php if ($_SESSION['login_user']['allowed_controllers']['item']) {?>
             <li><a href='admin.php?p=item'> 内容管理</a></li> 
+
 			
             <?php }
         	if ($_SESSION['login_user']['allowed_controllers']['category']) {?>

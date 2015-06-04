@@ -242,16 +242,16 @@ echo show_status($_obj['status']);
                             </form>
                         </td>
                         <td>
-                            <form action="admin.php?p=recommend" method="post">
+                            <form action="admin.php?p=listtop" method="post">
                                 <input type="hidden" name="id" value="<?php echo $_obj['item_id']; ?>"/>
                                 <?php
                                     $c = "";
-                                    if($_obj['recommend']==1)
+                                    if($_obj['listtop']==1)
                                         $c = "checked='checked'";
                                     else
                                         $c = "";
                                 ?>
-                                <input type="checkbox" <?=$c?> name="recommend" value="1"/>
+                                <input type="checkbox" <?=$c?> name="listtop" value="1"/>
                                 <input type="submit"/>
                             </form>
                         </td>

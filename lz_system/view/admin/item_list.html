@@ -67,6 +67,9 @@
                             </form>
                         </td>
                         <td>
+                        <!--
+                        未添加复选框判断
+                        -->
                             <form action="admin.php?p=listtop" method="post">
                                 <input type="hidden" name="id" value="{item_id}"/>
                                 <?php
@@ -80,15 +83,7 @@
                                 <input type="submit"/>
                             </form>
                         </td>
-                        <!--
-                        <?php
-                            $category_id=$data['category_id'];
-                            $status=$_GET['status'];
-                            if($category_id==2&&$status==1){
-                                echo "<td>123</td>"; //替换为复选框
-                            }
-                        ?>
-                        -->
+                        
                		</tr>
                     <!-- END -->
                     

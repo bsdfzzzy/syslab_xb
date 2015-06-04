@@ -1,0 +1,48 @@
+<div class='logo'>
+</div>
+
+	<div class='navi'>
+		<ul>
+			<li><a href='./admin.php'>{INDEX}</a></li>
+            
+            <?php if ($_SESSION['login_user']['allowed_controllers']['item']) {?>
+            <li><a href='admin.php?p=item'>{ITEM}</a></li> 
+
+			
+            <?php }
+        	if ($_SESSION['login_user']['allowed_controllers']['category']) {?>
+            <li><a href='admin.php?p=category'>{CATEGORY}</a></li>
+			
+            
+            <?php }
+ 			if ($_SESSION['login_user']['allowed_controllers']['user']) {?>
+            <li><a href='admin.php?p=user'>{USER}</a></li>
+			
+            <?php }
+			if ($_SESSION['login_user']['allowed_controllers']['rights']) {?>
+            <li><a href='admin.php?p=rights'>{RIGHTS}</a></li>
+			
+            <?php }
+			if ($_SESSION['login_user']['allowed_controllers']['config']) {?>
+            <li><a href='admin.php?p=config'>{SITE_CONFIG}</a></li>
+			
+             <?php }
+			if ($_SESSION['login_user']['allowed_controllers']['guestbook']) {?>
+            <li><a href='admin.php?p=guestbook'>{GUESTBOOK}</a></li>
+			
+            <?php }
+			if ($_SESSION['login_user']['allowed_controllers']['account']) {?>
+            <li><a href='admin.php?p=account'>{MY_ACCOUNT}</a></li>
+			
+            <?php }?>
+            <li><a href='./' target="_blank">{SITE_INDEX}</a></li>
+            <li><a href='index.php?p=login&m=logout&module=admin'>{LOGOUT}</a></li>
+            
+		</ul>
+	</div>
+	<script>
+	<?php if (!check_show('update')):?>
+	can_not_update = true;
+	<?php endif;?>
+	</script>
+           

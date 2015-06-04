@@ -1,0 +1,9 @@
+<?php
+define('LZ_CONTROLLER_DIR','controller/js/');
+define('LZ_VIEWER_DIR','view/js/');
+define('LZ_LANGUAGE_DIR','language/js/');
+define('LZ_MODULE','js');
+define('LZ_VIEWER_EXT','js');
+chdir('lz_system');
+include("index.php");
+?>

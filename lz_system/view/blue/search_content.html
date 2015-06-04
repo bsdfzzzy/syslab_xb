@@ -1,0 +1,68 @@
+
+<div id="content">
+
+        <!-- INCLUDE repair.html -->
+   
+   
+        <!-- INCLUDE block/left.html -->
+   
+         <div id="middle">
+		<div id="m_top">
+        	<span class="center">搜索结果：</span>
+        </div>
+        <div id="m_middle">
+            
+            <ul class="data2">
+                    <!-- BEGIN items -->  
+                    <li class="data3 data4"><a class="catename" href='index.php?p=item&item_id={item_id}'>{name}</a>
+                        <span class="author">{author}</span>
+                        <div class="voldata">
+                        <span class="Vol">{periodsAndpage}</span>
+                        <span class="showabstract"><a class="more" href="javascript:void(0);">[+摘要]</a></span>
+                        <span class="data_sp"><a href='index.php?p=pdfdownload&file={file_name}>&item_id={item_id}'>PDF</a>&nbsp;&nbsp;(&nbsp;{download_count}&nbsp;)</span>
+                        <span class="data_sp mag"><a href='index.php?p=viewhtml&item_id={item_id}'>HTML</a>&nbsp;&nbsp;(<span  class="red">&nbsp;{view_count}&nbsp;</span>)</span>
+                        </div>
+                        
+                        <div class="abstract">{description}</div>
+                    </li> <!-- END -->
+        </ul> 
+              <!-- <ul>
+			       <!-- BEGIN items -->
+							  <li>
+								  <a href="index.php?p=item&item_id={item_id}">{name}</a><b>{format_date:publish_time}</b>
+							  </li>
+				   <!-- END -->
+			  </ul>
+-->           
+    <script type="text/javascript">
+                            $(document).ready(function(){
+                             var $abs = $('div.abstract'); 
+                                $abs.hide();
+                            $('a.more').click(function(){
+                                $(this).parent().parent().next('div').slideToggle('slow');
+                                var $link=$(this);
+                                if($link.text()=='[+摘要]' ){
+                                    $link.text('[─摘要]');
+                                }
+                                else{
+                                    $link.text('[+摘要]');
+                                }
+                                    
+                            });
+                               /* $('.data3').mouseover(function(){
+                                    $(this).css('background','#F5F6F3');
+                                });
+                                 $('.data3').mouseout(function(){
+                                    $(this).css('background','#fff');
+                                });*/
+                                var $data3a = $('.data3:even');
+                            $data3a.css('background','#f4f4f4');
+                            }); 
+                            
+            </script>     
+           
+     </div>
+</div>
+</div>
+		
+

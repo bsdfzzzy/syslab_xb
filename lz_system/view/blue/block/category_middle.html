@@ -1,0 +1,76 @@
+  <div id="middle">
+		<div id="m_top">
+        	<h1 class="center">{category.name}</h1>
+        </div>
+        
+        <div id="m_middle">
+        	<!-- IF category_tree -->
+				<!-- BEGIN category_tree -->
+						<h3><a href="?p=category&category_id={category_id}">{name}</a></h3>
+						<ul>
+							<!-- BEGIN items -->
+							  <li>
+								  <a href="?p=item&item_id={item_id}">{name}</a><b>{format_date:publish_time}</b>
+							  </li>
+							<!-- END -->
+						</ul>
+			   <!-- END -->
+		   <!-- ELSE -->
+              
+               <ul>
+			       <!-- BEGIN items -->
+							  <li>
+								  <a href="?p=newsitem&item_id={item_id}">{name}</a><b>{format_date:publish_time}</b>
+							  </li>
+				   <!-- END -->
+			  </ul>
+           
+           <!-- ENDIF -->
+           <?php 
+         		if (isset($_GET['yid']))
+         		{
+         			?> <h2 id="years">年份</h2>
+                <div id="yearsBox">
+         			<ul class="middle-years">
+         			<?php  
+         				$i = 1;
+         				foreach (($_obj['jarray']) as $key => $value) {
+                            if($key % 5 != 0)
+                            {
+                                echo "<li style='left:".intval(420+80*($key%5))."px;'><a href='?p=category&category_id=-1&yid=".$i."''>".$key."</a></li>";
+                            }
+                            else
+                            {
+                                echo "<li style='left:420px;'><a href='?p=category&category_id=-1&yid=".$i."''>".$key."</a></li></ul><br/><ul class='middle-years'>";
+                            }
+         					
+         					$i++;
+         				}
+         			?>
+         			</ul>
+                </div>
+         			<h2 id="year"><?php 
+                        $j = $_GET['yid'];
+                        foreach ($_obj['jarray'] as $key => $value) {
+                            $j--;
+                            if ($j == 0){
+                                $year = $key;
+                                break;
+                            }
+                        }
+                        echo $year;
+                    ?></h2>
+                    <ul>
+                        <?php  
+                        foreach ($_obj['jarray'][$year] as $key => $value) {
+                            echo "<li><a href='?cid=".$key."'>".$value."</a></li>";
+                            $i++;
+                        }
+                        ?>
+                    </ul>
+         			<?php
+         		}
+         	?>
+         	
+     </div>
+</div>

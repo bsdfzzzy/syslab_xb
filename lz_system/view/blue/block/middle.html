@@ -1,0 +1,138 @@
+﻿<div id="middle">
+    <a href="index.php?p=newsitem&item_id=1497"><img src="images/info.jpg" style="margin-top: 10px;"></a>
+    <form name="" id="search" method="get" action="index.php">
+    <div class="sea"><img class="icon3" src="images/partner_search.png">
+
+        <span class="spans">文章快速检索</span>
+        <input id="search"  name ='name' type="text" value="">
+		<input type = 'hidden' name = 'p' value='advance_search'>
+		<input type = 'hidden' name = 'page_size'  value ='30'>
+		<input type = 'hidden' name = 'sort_mode'  value ='category'>
+        <a onclick="document.getElementById('search').submit()" class="button glow" style="margin-top:4px;margin-left:5px;width:0px;height:24px;float:left;"><span class="Go">Go</span></a>
+        <a href="index.php?p=advance_search" class="spans" style="margin-left:4px;">高级检索</a>
+    </div>
+    </form>
+	<div class="panel1 jian" style="display:block;position:relative;float:left;width:515px;height:250px;margin-top:25px;">
+            <ul class="ull">
+                <li class="mainitem" style="width:300px;margin:10px 10px;text-align:left;margin-left:20px;" >
+					<img class="icon1" src="images/ann.png"> 
+					<span class="title1" style="letter-spacing:15px;">信息公告</span>
+				</li>
+                <div id="newsrock">
+            <ul class="newspan">
+                
+            <!-- BEGIN news -->
+                    <li class="news"><span class="redspot" valign="top">.</span><a href="index.php?p=newsitem&item_id={item_id}" title="{name}" limit="13">{show_description_text:name,15}</a></li>
+                <!-- END --> 
+            </ul>
+       </div> 
+                <p class="morein"><a href="index.php?p=category&category_id=2" style="color:red;float:right;margin:auto 10px 10px auto;position:static;bottom:20px;">更多...</a></p>
+            </ul>    
+        </div>
+<?php 
+    $prevId = $_obj['prev_cur_next']['prev'];
+    $nextId = empty($_obj['prev_cur_next']['next'])?$_obj['prev_cur_next']['cur']:$_obj['prev_cur_next']['next'];
+    $map = "SELECT * FROM `lz_category` WHERE parent_id=1 AND category_id=".$_obj['prev_cur_next']['cur']." AND status=1 ORDER BY category_id DESC  LIMIT 1";
+    $_arr = $db->get_all($map);
+    foreach($_arr as $article)
+    {
+?>
+    <div class="mainco" style="display:block;position:relative;float:left; margin-top:15px;">
+            <script type="text/javascript">
+                            $(document).ready(function(){
+                             var $abs = $('div.abstract'); 
+                                $abs.hide();
+                            $('a.more').click(function(){
+                                $(this).parent().parent().next('div').slideToggle('slow');
+                                var $link=$(this);
+                                if($link.text()=='[+摘要]' ){
+                                    $link.text('[─摘要]');
+                                }
+                                else{
+                                    $link.text('[+摘要]');
+                                }
+                                    
+                            });
+                               /* $('.data3').mouseover(function(){
+                                    $(this).css('background','#F5F6F3');
+                                });
+                                 $('.data3').mouseout(function(){
+                                    $(this).css('background','#fff');
+                                });*/
+                                var $data3a = $('.data3:even');
+                            $data3a.css('background','#EDEDED');
+                            }); 
+                            
+            </script>
+    <div class="catatab">
+            <ul class="tabb">
+                <li class="tab_active">&nbsp;&nbsp;&nbsp;&nbsp;目录</li>
+                <li class="tab_no"></li>
+            </ul>
+<script type="text/javascript">
+    jQuery.fn.limit = function () {
+        //var self = $("[limit]");
+        self.each(function () {
+            var objString = $(this).text();
+            var objLength = $(this).text().length;
+            var num = $(this).attr("limit");
+            if (objLength > num) {
+                $(this).attr("title", objString);
+                objString = $(this).text(objString.substring(0, num) + "...");
+            }
+        /*  else {
+                 $(this).removeAttr("limit");
+                 }*/
+        })
+    }
+    $(function () {
+        $("[limit]").limit();
+    })
+</script>
+
+    
+<?php
+        $childid=$article[category_id];
+       // echo "<div id='m_to+p'>";
+        //    echo "<a href='index.php?p=category&category_id=1'>更多已发行往期</a>";
+        //echo "</div>";
+    
+        $_arr = $db->get_all("SELECT * FROM `lz_category` WHERE parent_id=$childid AND status=1 ORDER BY category_id DESC");
+        
+         foreach($_arr as $art) {
+?>
+
+        <div class="midcontent">
+                <div class="catagroy">
+                    <p class="catah1"><a class="catah1_a" href='index.php?p=category&category_id=<?=$art["category_id"]?>'><?=$art["name"]?></p>
+                </div>
+
+<?php    
+        $itemid=$art[category_id];
+        $_arr = $db->get_all("SELECT * FROM `lz_item` WHERE category_id=$itemid AND status=1 ORDER BY order_id DESC,publish_time DESC ");  
+        foreach($_arr as $at){
+?>
+         <ul class="data2">
+                    <li class="data3"><a class="catename" href='index.php?p=item&item_id=<?=$at[item_id]?>'><?=$at['name']?></a>
+                        <span class="author"><?=$at['author']?></span>
+                        <div class="voldata">
+                        <span class="Vol"><?=$at["periodsAndpage"]?></span>
+                        <span class="showabstract"><a class="more" href="javascript:void(0);">[+摘要]</a></span>
+                        <span class="data_sp"><a href='index.php?p=pdfdownload&file=<?=$at["file_name"]?>&item_id=<?=$at["item_id"]?>'><u>PDF下载</u></a>&nbsp;&nbsp;(<span  class="red">&nbsp;<?=$at["download_count"]?>&nbsp;</span>)</span>
+                        <span class="data_sp mag"><a href='index.php?p=viewhtml&file=<?=$at["file_name"]?>&item_id=<?=$at["item_id"]?>'>在线阅读</a>&nbsp;&nbsp;(<span  class="red">&nbsp;<?=$at["view_count"]?>&nbsp;</span>)</span>
+                        </div>
+                        
+                        <div class="abstract"><?=$at["description"]?></div>
+                    </li>
+        </ul>
+<?php
+                 }
+        echo "</div>";
+      
+            }
+        }
+?> 
+    </div>
+    </div>
+
+</div>

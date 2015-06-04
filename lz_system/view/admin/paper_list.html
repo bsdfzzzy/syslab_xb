@@ -1,0 +1,53 @@
+<div >
+            <table cellpadding="0" cellspacing="0" border="0" id="paper_table" class="list_table" >
+            	<thead>
+                   	<tr>
+                		<th width="50">优先级</th>
+                		<th width="100">姓名</th>
+                        <th width="100">学院</th>
+                       	<th width="130">学号</th>
+                       	<th width="130">时间</th>
+						<th width="50">状态</th>
+                        <th width="100">{OPTIONS}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+          		  	<!-- BEGIN papers -->
+            		<tr>
+               		 	<td><div admin_type="text"
+                        	admin_para="m=update&table=paper&column=order_id&id={paper_id}" 
+                            admin_trigger="click" style="text-align:center">{order_id}</div>
+                        </td>
+               		 	<td>{name}</td>
+                        <td>{school}</td>
+                        <td>{student_id}</td>
+               		    <td>{format_date:time}</td>
+						<td><div admin_type="text"
+		              	admin_para="m=update&table=paper&column=status&id={paper_id}" 
+		                    admin_select_value="{status}"
+		                    admin_select_source_id="status_select"
+		                    admin_trigger="click"
+							>{show_status:status}</div></td>
+                        <td>
+                        	
+                            <a href="javascript:;" onclick="if (confirm('{DELETE_CONFIRM}')) delete_paper({paper_id},this);">{DELETE}</a>&nbsp;
+                            	<a href="admin.php?p=paper&paper_id={paper_id}&action=view">查看</a>
+                        </td>
+               		</tr>
+                    <!-- END -->
+                    
+                </tbody>
+                
+            </table>
+</div>
+            {pager}
+            
+            
+<div style="display:none">
+<select id="status_select">
+	<!-- BEGIN statuses -->
+	<option value="{index}">{value}</option>
+	<!-- END -->
+</select>
+</div>

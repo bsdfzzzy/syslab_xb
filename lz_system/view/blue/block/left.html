@@ -1,0 +1,103 @@
+<div id="left">
+    <div class="panel1 jian mleft">
+        <ul class="ull mainUll">
+            <li class="mainitem">
+                <img class="icon1" src="images/app_edit.png"><span class="title1">采编系统</span>
+            </li>
+            <li class="item shadow"><span class="title title3"><a href="http://dkjb.cbpt.cnki.net/EditorDN/index.aspx?t=1&mid=dkjb" class="title3a"><img class="icon2" src="images/write.png">作者投稿</a></span>
+            </li>
+            <li class="item shadow"><span class="title title3"><a href="http://dkjb.cbpt.cnki.net/EditorDN/index.aspx?t=1&mid=dkjb" class="title3a"><img class="icon2" src="images/acheck.png">作者查稿</a></span>
+            </li>
+            <li class="item shadow"><span class="title title3"><a href="http://dkjb.cbpt.cnki.net/EditorDN/index.aspx?t=2&mid=dkjb" class="title3a"><img class="icon2" src="images/buddy_group.png">专家审稿</a></span>
+            </li>
+            <li class="item shadow"><span class="title title3"><a href="http://dkjb.cbpt.cnki.net/EditorDN/index.aspx?t=2&mid=dkjb" class="title3a"><img class="icon2" src="images/user.png">编委审稿</a></span>
+            </li>
+            <li class="item shadow"><span class="title title3"><a href="http://dkjb.cbpt.cnki.net/EditorDN/index.aspx?t=3&mid=dkjb" class="title3a"><img class="icon2" src="images/work1.png">编辑办公</a></span>
+            </li>
+            
+            <li class="item shadow"><span class="title title3"><a  href="http://dkjb.cbpt.cnki.net/EditorDN/index.aspx?t=3&mid=dkjb" class="title3a"><img class="icon2" src="images/work2.png">主编办公</a></span>
+            </li>
+
+        </ul>
+    </div>
+    <div class="panel1 jian mleft">
+        <ul class="ull">
+            <li class="mainitem">
+                <img class="icon1" src="images/notice.png"><span class="title1">作者须知</span>
+            </li>
+             <li class="item hre"><span class="title tit"><img  class="icon5" src="images/ar.png"><a href="http://www.magtech.com.cn/journalx_author_faq.html" class="button-border-primary button-rounded btnw" style="height:auto;">注意事项</a></span>
+            </li>
+            <li class="item hre"><span class="title tit"><img  class="icon5" src="images/ar.png"><a href="index.php?p=newsitem&item_id=1499" class="button-border-primary button-rounded btnw"><!--<img class="icon2" src="images/edit_user.png">-->投稿须知</a></span>
+            </li>
+            <li class="item hre"><span class="title tit"><img  class="icon5" src="images/ar.png"><a  href="index.php?p=newsitem&item_id=1500" class="button-border-primary button-rounded btnw"><i class="fa fa-download"></i>审稿流程</a></span>
+            </li>
+            <li class="item hre"><span class="title tit"><img  class="icon5" src="images/ar.png"><a  href="index.php?p=newsitem&item_id=1501" class="button-border-primary button-rounded btnw"><i class="fa fa-download"></i>编校流程</a></span>
+            </li>
+            <li class="item hre"><span class="title tit"><img  class="icon5" src="images/ar.png"><a  href="index.php?p=newsitem&item_id=1502" class="button-border-primary button-rounded btnw"><i class="fa fa-download"></i>版权申明</a></span>
+            </li>
+            <li class="item hre"><span class="title tit"><img  class="icon5" src="images/ar.png"><a  href="index.php?p=category&category_id=6" class="button-border-primary button-rounded btnw"><i class="fa fa-download"></i>资料下载</a></span>
+            </li>
+        </ul>
+    </div>
+    <div class="panel1 jian mleft">
+        <ul class="ull">
+            <li class="mainitem">
+                <img class="icon1" src="images/book.png"><span class="title1">文章导读</span>
+            </li>
+            <li class="item_2 hre"><span class="title"><a href="index.php?p=ranklist&type=time"><i class="fa fa-plus"></i>精选文章</a></span>
+            </li>
+            <li class="item_2 hre"><span class="title ko"><a href="index.php?p=ranklist&type=view"><i class="fa fa-thumbs-up"></i>文章点击排行</a></span>
+            </li>
+            <li class="item_2 hre"><span class="title ko"><a  href="index.php?p=ranklist&type=download"><i class="fa fa-download"></i>全文下载排行</a></span>
+            </li>
+             <li class="item_2 hre"><span class="title"><a href="index.php?p=category&category_id=-1&yid=1" ><i class="fa fa-plus"></i>过刊浏览</a></span>
+            </li>
+             <li class="item_2 hre"><span class="title"><a href="index.php?p=advance_search" ><i class="fa fa-plus"></i>文章检索</a></span>
+            </li>
+        </ul>
+    </div>
+<?php
+  $map = "select count(*) from lz_curip where type=0";
+  $online = $db->get_all($map);
+  $map = "select `value` from `lz_webdata` where `name`='webview'";
+  $webview = $db->get_all($map);
+  $map = "select count(*) from `lz_curip` where type=1";
+  $today = $db->get_all($map);
+  $webview = $webview[0]["value"];
+  $online = $online[0]['count(*)'];
+  $today = $today[0]['count(*)'];
+  //echo $webview." , ".$online;
+?>
+    <div class="panel1 jian mleft">
+    <ul class="ull">
+        <li class="mainitem">
+            <img class="icon1" src="images/stats.png"><span class="title1">访问统计</span>
+        </li>
+        <li class="item4"><span class="title ko"><a ><i class="fa fa-plus lef"></i>访问统计:<span class="number"><?=$webview?></span>
+            </a>
+            </span>
+        </li>
+        <li class="item4"><span class="title ko"><a ><i class="fa fa-thumbs-up lef"></i>今日访问:<span class="number"><?=$today?></span>
+            </a>
+            </span>
+        </li>
+        <li class="item4"><span class="title ko"><a ><i class="fa fa-download lef"></i>当前在线:<span class="number"><?=$online?></span>
+            </a>
+            </span>
+        </li>
+    </ul>
+</div>
+<!--
+        <h3>全文检索</h3>
+   
+        <form action="search.php" method="get" id="form_1" >
+            <input value=""  name="q" type="text" /><br />
+            <select name="tm">
+                  <option value="1">按标题</option>
+                  <option value="2">按作者</option>
+                  <option value="3">按关键词</option>
+             </select>
+            <input type="submit" value="开始搜索"  />
+        </form>
+-->
+</div>

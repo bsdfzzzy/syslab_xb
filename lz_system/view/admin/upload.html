@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"> 
+<head>
+	<!-- INCLUDE meta.html -->
+</head>
+<body style="text-align:left">
+<?php if (check_show('add')){?>
+<form style="border:0" action="admin.php?p=upload&m=upload" method="post" ENCTYPE="multipart/form-data" >
+	<input type="file" style="width:150px;" size="10" name="upfile" /> <input type="submit" value="上传" /> <span style="color:orange" id="msg">{msg}</span>
+	&nbsp;&nbsp;{CHOOSE_ATTACHMENT}:
+	<select style="height:20px;width:400px;" onchange="insert_file(this)">
+		<option value=''> </option>
+		<!-- BEGIN recent -->
+		<option 
+			value="{myurlencode:filepath}" fname="{name}">
+			({format_date:mtime}) {name}
+		</option>
+		<!-- END -->
+	</select>
+</form>
+
+<script>
+function insert_file(o)
+{
+	var index = o.selectedIndex;
+	if (index <= 0) return;
+	var option = o.options[index];
+	var url = option.value;
+	var fname = $(option).attr('fname');
+	var html = get_display_html(url,fname);
+	var ftype = fname.split('.');
+	ftype = ftype[ftype.length-1].toLowerCase();
+	//if ie and want to insert flash video
+	if ($.browser.msie && ftype == 'flv')
+	{
+		top.frames[0].frames[0].document.body.innerHTML+=html;
+	}
+	else
+	{
+		var editor = top.FCKeditorAPI.GetInstance('description');
+		editor.InsertHtml(html);
+	}
+	o.selectedIndex = 0;
+}
+
+function get_display_html(url,fname)
+{
+	var ftype = fname.split('.');
+	ftype = ftype[ftype.length-1].toLowerCase();
+	var html = '';
+	
+	if (ftype == 'flv')
+	{
+		url=encodeURIComponent(url);
+		html = '<embed src="flvplayer.swf" allowfullscreen="true" flashvars="vcastr_file='+url+'&IsAutoPlay=0&BufferTime=3" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="opaque" type="application/x-shockwave-flash" width="350" height="300"></embed>';
+	}
+	else if (',jpg,jpeg,gif,png,bmp,'.indexOf(','+ftype+',') != -1)
+	{
+		html = '<img src="'+url+'" />';
+	}
+	else
+	{
+		html = '<br />{ATTACHMENT}:<a href="'+url+'" >'+fname+'</a>';
+	}
+	return html;
+}
+
+<!-- IF file_url -->
+//如果上传成功
+var html = get_display_html('{myurlencode:file_url}','{filename}');
+var ftype = '{filename}'.split('.');
+ftype = ftype[ftype.length-1].toLowerCase();
+if ($.browser.msie && ftype == 'flv')
+{
+	top.frames[0].frames[0].document.body.innerHTML+=html;
+}
+else
+{
+	//var editor = top.FCKeditorAPI.GetInstance('description');
+	//editor.InsertHtml(html);
+	var textarea = top.document.getElementsByName("description");
+	textarea[0].innerHTML += html;
+	var furl = top.document.getElementById("file_name");
+	furl.value = "{myurlencode:file_url}";
+}
+<!-- ENDIF -->
+setTimeout("document.getElementById('msg').style.display='none'",3000);
+</script>
+<?php 
+}else
+{
+	echo LANG_ACCESS_DENIED;
+}?>
+</body>
+</html>

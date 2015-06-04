@@ -1,0 +1,33 @@
+<div class="pager">
+	{pager}
+</div>
+<!-- BEGIN items -->
+<div class="gb_item">
+	<div class="gb_name">{format_date:time}&nbsp;&nbsp;<b>{name}</b>&nbsp;&nbsp;{email}&nbsp;&nbsp;
+	<?php if (check_show('delete')):?>
+	<a href="javascript:;" onclick="delete_guestbook({guestbook_id},this)">{DELETE}</a>	&nbsp;&nbsp;
+	<?php endif;?>	
+	<?php if (check_show('update')):?>
+	<!-- IF status="0" --><a id="agree_{guestbook_id}" href="javascript:;" onclick="agree_guestbook({guestbook_id},this)" style="color:red">{PASS_IT}</a>	&nbsp;&nbsp;	<!-- ENDIF -->
+	<?php endif;?>
+	
+	</div>
+	<div class="gb_content_wrap">
+		<div><div class="gb_content" admin_type="textarea"
+	            	admin_para="m=update&table=guestbook&column=content&id={guestbook_id}" 
+	                admin_button="no" 
+	                admin_trigger="click">{content}
+		</div></div>
+		<div>
+		<div class="gb_reply" admin_type="textarea"
+	    	admin_para="m=update&table=guestbook&column=reply_content&id={guestbook_id}" 
+	       	admin_button="no" 
+	        admin_trigger="click" >{reply_content}
+		</div>
+		</div>
+	</div>
+</div>
+<!-- END -->
+<div class="pager">
+	{pager}
+</div> 

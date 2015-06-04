@@ -1,0 +1,56 @@
+<div id="banner">
+	<img src="images/img_01.jpg">
+    <img id="logo" src="images/logo.png">
+	<div id="nav_top">
+    	<p id="dateInfo"></p>
+    	<ul>
+        	<li style="border:none!important;"><a href="index.php">首页</a></li>
+            <li><a href="index.php?p=newsitem&item_id=4" id="introduce">期刊简介</a></li>
+            <li><a href="index.php?p=newsitem&item_id=3" id="editorial-board">编委会</a></li>
+            <li><a href="index.php?p=newsitem&item_id=2" id="editors">编辑部</a></li>
+            <li><a href="index.php?p=category&category_id=-1&yid=1" id="qikan">期刊浏览</a></li>
+            <li><a href="index.php?p=newsitem&item_id=1497" id="wants">征稿启事</a></li>
+            <li><a href="index.php?p=guestbook" id="comment">留言</a></li>
+    <!--        <li><a href="index.php?p=newsitem&item_id=1">联系我们</a></li> -->
+        </ul>
+    </div>
+    <div id = "glow">
+        <div class="glow" style="width:10px;height:15px;"></div>
+        <div class="glow" style="width:30px;height:30px;"></div>
+        <div class="glow" style="width:50px;height:50px;"></div>
+    </div>
+    <script type="text/javascript">
+    setTimeout(function(){
+        document.getElementById("logo").style.left = "430px";
+    },200);
+       $(document).ready(function(){
+        var now =new Date();
+        var s=now.getHours();
+        var min=now.getMinutes();
+       var year=now.getFullYear();
+       var moth=now.getMonth();
+       var date=now.getDate();
+       if (min<10){
+           document.getElementById('dateInfo').innerHTML=year+"年"+(moth+1)+"月"+date+"日&nbsp;&nbsp;   "+s+":0"+min;
+       }else{
+           document.getElementById('dateInfo').innerHTML=year+"年"+(moth+1)+"月"+date+"日&nbsp;&nbsp;   "+s+":"+min;
+       }
+       
+       });
+      
+    </script>
+    <script type="text/javascript">
+    if(console.log)
+    {
+      console.log("一张网页，要经历怎样的过程，才能抵达用户面前？");
+      console.log("一位新人，要经历怎样的成长，才能站在技术之巅？");
+      console.log("探寻这里的秘密；");
+      console.log("体验这里的挑战；");
+      console.log("成为这里的主人；");
+      console.log("加入Ｓｙｓｌａｂ，你，可以影响世界。");
+      console.log("http://www.syslab.us/");
+    }
+
+    </script>
+
+</div>

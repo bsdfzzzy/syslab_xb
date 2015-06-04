@@ -1,0 +1,137 @@
+<div id="middle">
+		<div id="m_top">
+        </div>
+        <div id="m_middle">
+            <script type="text/javascript">
+            function showTab(tabID)
+            {
+                for(var i=0;i<4;i++){
+                    if(i == tabID){
+                        document.getElementById("tab"+i).style.display="block";
+                        document.getElementById("tb"+i).style.borderBottomColor="#fff";
+                    }
+                    else {
+                        document.getElementById("tab"+i).style.display="none";
+                        document.getElementById("tb"+i).style.borderBottomColor="#ccc";
+
+                    }
+                }
+            }
+            </script>
+        	<h1>{item.name}</h1>
+
+            <?php if(!empty($_obj['item']['author_string'])){ ?>
+                <h2>{item.author_string}</h2>
+            <?php } elseif(!empty($_obj['item']['author'])){?>
+                <h2>{item.author}</h2>
+            <?php } ?>   
+
+            <?php if(!empty($_obj['item']['institution_string'])){ ?>
+                <h3>{item.institution_string}</h3>
+            <?php } elseif(!empty($_obj['item']['institution'])){?>
+                <h3>{item.institution}</h3>
+            <?php } ?>  
+
+            <?php if(!empty($_obj['item']['authoren_string'])){ ?>
+                <h3>{item.authoren_string}</h3>
+            <?php } elseif(!empty($_obj['item']['name_en'])){?>
+                <h3>{item.name_en}</h3>
+            <?php } ?>  
+
+            <?php if(!empty($_obj['item']['institutionen_string'])){ ?>
+                <h3>{item.institutionen_string}</h3>
+            <?php } elseif(!empty($_obj['item']['institutionen'])){?>
+                <h3>{item.institutionen}</h3>
+            <?php } ?>  
+			<a href="#">				
+				<div class="jiathis_style" style="float:right;">
+					<span class="jiathis_txt">分享到：</span>
+					<a class="jiathis_button_icons_1"></a>
+					<a class="jiathis_button_icons_2"></a>
+					<a class="jiathis_button_icons_3"></a>
+					<a class="jiathis_button_icons_4"></a>
+					<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+					<a class="jiathis_counter_style"></a>
+				</div>
+				<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+			</a>
+            <div id="itemTabsBox">
+                <ul>
+                    <li id="tb0" onclick="showTab(0)" style="border-bottom-color:#fff;">摘要</li>
+                    <li id="tb1" onclick="showTab(1)">参考文献</li>
+                    <li id="tb2" onclick="showTab(2)">相关文章</li>
+                    <li id="tb3" onclick="showTab(3)">相关作者文章</li>
+                </ul>
+                <div id="tab0" style="display:block;">
+                <?php
+                  echo eregi_replace("\n","</br>",$_obj['item']['description']);
+                ?>
+                <strong style="display:block;"><span class="strong">关键词：</span>
+                        <?php
+                                foreach ($_obj['item_keywords'] as $value) {
+                                    echo "<a href='search.php?q=".$value["keyword"]."&tm=3'>".$value["keyword"]."</a>,";
+                                }
+                        ?>
+                     </strong>
+                     <h3>引用本文:</h3>
+                          <span class="bl">{item.name}[J].电子科技大学学报,{item.periodsAndpage}
+                          </span>
+                          <h3>链接本文:</h3>
+                          <a id="url" href=""></a>
+                </div>
+                <div id="tab1" style="display:none;"><p><?php
+                  echo eregi_replace("\n","</br>",$_obj['item']['reference']);
+                ?></p></div>
+                <div id="tab2" style="display:none;"><ul>
+                <?php
+                    $ar_i = 1;
+                    foreach ($_obj['article'] as $id => $name) {
+                        echo "<li>";
+                        echo "<a href='?p=item&item_id=".$id."'>[$ar_i] ".$name['author']." . &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:blue;'>".$name['name']."</span>[J]. 电子科技大学学报,".$name['periodsAndpage']."</a>";
+                        echo "</li>";
+                        $ar_i++;
+                    }
+                    //var_dump($_obj['article']);
+                ?></ul>
+                </div>
+                <div id="tab3" style="display:none;">
+                    <?php
+                        echo "<br/>";
+                        foreach ($_obj['author_articles'] as $key => $value) {
+                            echo $key."<br/><ul>";
+                            foreach ($value as $aid => $name) {
+                                echo "<li>";
+                                echo "<a href='?p=item&item_id=".$aid."'>".$name[0]."</a>";
+                                echo "</li>";
+                            }
+                            echo "</ul><br/>";
+                        }
+                    ?>
+                </div>
+            </div>
+             <!-- IF item.status="0" -->
+			<?php if ($_GET['preview']):?>
+			<div style="margin:400px 10px; width:300px;">
+				<input class="pbtn" type="button" value="确认发布" onclick="window.location='admin.php?p=item&item_id={item.item_id}&m=status&status=1';" /> 	
+				<input class="pbtn" type="button" value="编辑" onclick="window.location='admin.php?p=item&item_id={item.item_id}&action=edit_item';" />  
+				<input class="pbtn" type="button" value="返回" onclick="history.go(-1)" /> 
+			</div>
+            <style>
+            .pbtn{
+                float: left;
+                width: 100px;
+            }
+            </style>
+			<?php endif;?>
+            
+		<!-- ENDIF -->
+            
+      <script>
+        var od=document.getElementById('url');
+        od.innerHTML=window.location.href;
+        od.href=window.location.href;
+      </script>
+        </div>
+        <div id="m_bottom">
+        </div>
+    </div>

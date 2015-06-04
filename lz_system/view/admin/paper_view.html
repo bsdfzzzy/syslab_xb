@@ -1,0 +1,34 @@
+<table cellpadding="3" cellspacing="0" border="0" style="margin:10px;">
+	<tr>
+		<th>姓名:</th>
+		<td>{paper.name}</td>
+	</tr>
+	<tr>
+		<th>学院:</th>
+		<td>{paper.school}</td>
+	</tr>
+	<tr>
+		<th>学号:</th>
+		<td>{paper.student_id}</td>
+	</tr>
+	<tr>
+		<th>时间:</th>
+		<td>{format_date:paper.time}</td>
+	</tr>
+	<tr>
+		<th>附件:</th>
+		<td>
+			<!-- BEGIN files -->
+			<a href="{filepath}" target="_blank">{filename}</a><br />
+			<!-- END -->
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<!-- IF paper.status="0" -->
+			<input type="button" onclick="window.location='admin.php?p=paper&paper_id={paper.paper_id}&m=status&status=1'" value="确认处理" />&nbsp;
+			<!-- ENDIF -->
+			<a href="javascript:history.go(-1);">返回</a>
+		</td>
+	</tr>
+</table>

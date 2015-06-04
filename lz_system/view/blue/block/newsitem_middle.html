@@ -1,0 +1,25 @@
+<div id="middle">
+		<div id="m_top">
+        </div>
+        <div id="m_middle">
+        	<h1>{item.name}</h1>
+			<?php
+				if($_obj['item']['category_id']==6)
+					echo '<p>'.$_obj['item']['description']."</p>";
+			?>
+            <!--<p>{item.description}</p>-->
+            {item.html}
+             <!-- IF item.status="0" -->
+			<?php if ($_GET['preview']):?>
+			<div style="margin:30px;">
+				<input type="button" value="确认发布" onclick="window.location='admin.php?p=item&item_id={item.item_id}&m=status&status=1';" /> 	
+				<input type="button" value="编辑" onclick="window.location='admin.php?p=item&item_id={item.item_id}&action=edit_item';" />  
+				<input type="button" value="返回" onclick="history.go(-1)" /> 
+			</div>
+			<?php endif;?>
+		<!-- ENDIF -->
+
+        </div>
+        <div id="m_bottom">
+        </div>
+    </div>

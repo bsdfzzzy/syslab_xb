@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN"> 
+<head>
+	
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="text/javascript" src="js/jquery/jquery.js"></script>
+
+<!-- INCLUDE meta.html -->
+<style>
+.gb_item { margin:10px;  border-bottom:1px solid #ddd;}
+.gb_content_wrap { margin:5px; background-color:rgb(231, 242, 253); padding:5px; border:1px solid transparent;}
+.gb_content { }
+.gb_reply {  border:1px solid #33aaff;  background-color:lightblue;}
+</style>
+</head>
+<body>
+<div class='maindiv'>
+
+<div class="headerdiv">
+	<!-- INCLUDE header.html -->
+</div>
+
+<div id='content' style="margin:0px;padding:0px;">
+	<div id='left'>
+    	<div style="margin:10px;margin-top:30px;">
+        	<ul>
+ 
+            </ul>
+    		
+        </div>
+    </div>
+    <div id='maindiv'>
+    	<div class="description">
+			{page_description}
+        </div>
+
+        <!-- IF err_msg -->
+        <div class="err_msg pad">
+        	{err_msg}
+        </div>
+        <!-- ENDIF -->
+        
+        <!-- IF success_msg -->
+        <div class="success_msg pad">
+        	{success_msg}
+        </div>
+        <!-- ENDIF -->
+        
+        <div class="real_content">
+        	
+        	
+            <!-- INCLUDE guestbook_list.html -->
+        </div>
+        
+    </div>
+</div>
+
+<script>
+function delete_guestbook(id,o)
+{
+	if (confirm('{DELETE_CONFIRM}'))
+	{
+		$(o).attr('to_be_delete','yes').html('{DELETING}').unbind('click');
+		$.post('admin.php?p=ajax&m=delete&table=guestbook&id='+id,{ },delete_callback);
+	}
+}
+function delete_callback(s)
+{
+	if (s == 'error')
+	{
+		alert('{DELETE_ERROR}');
+		return false;
+	}
+	$('[to_be_delete=yes]').parent().parent().fadeOut();
+}
+
+function agree_guestbook(id,o)
+{
+	$(o).attr('to_be_hidden','yes').html('loading...').unbind('click');
+	$.post('admin.php?p=ajax&m=update&table=guestbook&column=status&id='+id,{ value:'1' },function()
+	{
+		$('[to_be_hidden=yes]').fadeOut();
+	});
+}
+
+</script>
+<!-- INCLUDE footer.html -->
+
+</div>
+</body>
+</html>

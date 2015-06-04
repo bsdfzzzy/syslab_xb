@@ -1,0 +1,78 @@
+﻿<div id="bottom">
+	<p>	
+    	<span class="copyright">copyright©2014 电子科技大学学报编辑部  </span>
+        <span class="copyright">地址：成都市建设北路二段四号电子科技大学主楼中213室  电话：(028)83201443  Email:xbshkb@uestc.edu.cn </span>
+        <a href="admin.php"><span class="name">  管理登陆</span></a>
+    </p>
+     <div id="leftsead">
+	<ul>
+		<li><a class="youhui"><img src="images/wechat.jpg" width="47" height="49" class="shows" /><img src="images/wechatma.jpg" width="200" height="200" class="hides1" usemap="#taklhtml"/><map name="taklhtml"><area shape="rect" coords="26,273,115,300 " href="" /></map></a></li>
+        <li><a class="youhui"><img src="images/weibo.jpg" width="47" height="49" class="shows" /><img src="images/weiboma.jpg" width="200" height="200" class="hides" usemap="#taklhtml"/><map name="taklhtml"><area shape="rect" coords="26,273,115,300 " href="" /></map></a></li>
+		<li><a id="top_btn"><img src="images/ll06.jpg" width="131" height="49" class="hides"/><img src="images/l06.png" width="47" height="49" class="shows" /></a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+	   $("#leftsead a").hover(function(){
+		if($(this).prop('className')=='youhui')
+            {
+                $(this).children("img.hides").show();
+                $(this).children("img.hides1").show();
+            }
+           else{
+			$(this).children("img.hides").show();
+            $(this).children("img.hides1").show();
+			$(this).children("img.shows").hide();
+			$(this).children("img.hides").animate({'marginRight':'0px'},'slow');
+            $(this).children("img.hides1").animate({'marginRight':'0px'},'slow'); 
+		  }
+	},function(){ 
+		if($(this).prop('className')=='youhui'){
+			$(this).children("img.hides").hide('slow');
+            $(this).children("img.hides1").hide('slow');
+		}else{
+			$(this).children("img.hides").animate({'marginRight':'-143px'},'slow',function(){$(this).hide();$(this).next("img.shows").show();});
+            $(this).children("img.hides1").animate({'marginRight':'-143px'},'slow',function(){$(this).hide();$(this).next("img.shows").show();});
+		}
+	});
+
+	$("#top_btn").click(function(){if(scroll=="off") return;$("html,body").animate({'scrollTop': 0}, 730);});
+	/* var t=$("#m_middle h1:first").text();
+		if(t=='期刊简介')
+			$('#introduce').addClass('hactive');
+		else if(t=='学报编委')
+			$('#editorial-board').addClass('hactive');
+		else if(t=='编辑部')
+				$('#editors').addClass('hactive');
+		else if(t=='征稿启事')
+				$('#wants').addClass('hactive');
+        else if(t=='期刊浏览')
+                $('#qikan').addClass('hactive');
+        else if(t=='留言')
+                $('#comment').addClass('hactive');
+		else
+			{
+				var t=$("[href='index.php']")
+				t.addClass('hactive');
+			}
+*/
+		var myNav = document.getElementById('nav_top').getElementsByTagName('a');
+		for(var i=0;i<myNav.length;i++){
+		    var link=myNav[i].getAttribute("href");
+		    var webUrl=document.location.href;
+		    if(webUrl.indexOf(link)!=-1){
+                myNav[i].className="hactive";
+                if(i==0){
+                    myNav[0].className="hactive";
+                }else{
+                    myNav[0].removeAttribute('class');
+    
+                }
+            }
+		}
+
+		});
+		
+</script>
+</div>
